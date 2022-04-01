@@ -1,5 +1,7 @@
 
 # from pydoc import classname
+from tkinter.ttk import Style
+from turtle import width
 from dash import html, dcc
 from dash.dependencies import Input, Output, State
 
@@ -76,49 +78,126 @@ header = dbc.Navbar(
 ######################## Define Body components #########################
 
 value= 100
-card_style={"border-radius":"16px",
-            "height": "160px",}
+card_style={"border-radius":"30px",
+            "height": "220px", "width":"100%",}
+icon_style = {"height": "50px", "width":"50px", "background-color":"red"}
 
-card_content = [
-    dbc.CardHeader("Card header"),
+value_style = {"font-weight":"900", "font-size":"40px"}
+col_style = {"margin-right":"0px"}
+
+# we need to look into how to pass props to component then we can refactor to use a single component
+swap_stations_card_content = [
     dbc.CardBody(
         [
-            html.H5(value, className="card-title"),
-            html.P(value,className="card-text"),
+            # html.I(className="fas fa-cube", style = icon_style),
+            html.Img(src=app.get_asset_url("glossy-transparent-battery-icon-yellow-vector-1538275.jpeg"), height="80px"),
+            html.H5(value, className="card-title pt-3", style = value_style),
+            html.P("Total Swap Stations",className="text-center pt-3", style={ "font-size":"16px"}),
+        ]
+    ),
+]
+ #public card co
+public_card_content = [
+    dbc.CardBody(
+        [
+            # html.I(className="fas fa-cube", style = icon_style),
+            html.Img(src=app.get_asset_url("glossy-transparent-battery-icon-yellow-vector-1538275.jpeg"), height="80px"),
+            html.H5(value, className="card-title pt-3", style = value_style),
+            html.P("Public",className="text-center pt-3", style={ "font-size":"16px"}),
+        ]
+    ),
+]
+ #public card co
+private_card_content = [
+    dbc.CardBody(
+        [
+            # html.I(className="fas fa-cube", style = icon_style),
+            html.Img(src=app.get_asset_url("glossy-transparent-battery-icon-yellow-vector-1538275.jpeg"), height="80px"),
+            html.H5(value, className="card-title pt-3", style = value_style),
+            html.P("Private",className="text-center pt-3", style={ "font-size":"16px"}),
+        ]
+    ),
+]
+
+ #public card co
+riders_card_content = [
+    dbc.CardBody(
+        [
+            # html.I(className="fas fa-cube", style = icon_style),
+            html.Img(src=app.get_asset_url("glossy-transparent-battery-icon-yellow-vector-1538275.jpeg"), height="80px"),
+            html.H5(value, className="card-title pt-3", style = value_style),
+            html.P("Riders",className="text-center pt-3", style={ "font-size":"16px"}),
+        ]
+    ),
+]
+ #public card co
+batteries_card_content = [
+    dbc.CardBody(
+        [
+            # html.I(className="fas fa-cube", style = icon_style),
+            html.Img(src=app.get_asset_url("glossy-transparent-battery-icon-yellow-vector-1538275.jpeg"), height="80px"),
+            html.H5(value, className="card-title pt-3", style = value_style),
+            html.P("Total Batterries in Network",className="text-center pt-3", style={ "font-size":"16px"}),
+        ]
+    ),
+]
+ #public card co
+swaps_card_content = [
+    dbc.CardBody(
+        [
+            # html.I(className="fas fa-cube", style = icon_style),
+            html.Img(src=app.get_asset_url("glossy-transparent-battery-icon-yellow-vector-1538275.jpeg"), height="80px"),
+            html.H5(value, className="card-title pt-3", style = value_style),
+            html.P("Total Swaps",className="text-center pt-3", style={ "font-size":"16px"}),
+        ]
+    ),
+]
+ #public card co
+distance_card_content = [
+    dbc.CardBody(
+        [
+            # html.I(className="fas fa-cube", style = icon_style),
+            html.Img(src=app.get_asset_url("glossy-transparent-battery-icon-yellow-vector-1538275.jpeg"), height="80px"),
+            html.H5(value, className="card-title pt-3", style = value_style),
+            html.P("Total Distance",className="text-center pt-3", style={ "font-size":"16px"}),
+        ]
+    ),
+]
+ #public card co
+average_distance_card_content = [
+    dbc.CardBody(
+        [
+            # html.I(className="fas fa-cube", style = icon_style),
+            html.Img(src=app.get_asset_url("glossy-transparent-battery-icon-yellow-vector-1538275.jpeg"), height="80px"),
+            html.H5(value, className="card-title pt-3", style = value_style),
+            html.P("Avg. Distance before Swap",className="text-center pt-3", style={ "font-size":"16px"}),
         ]
     ),
 ]
 cards = html.Div(
-    [
+    [ dbc.Container([
         dbc.Row(
             [
-                dbc.Col(dbc.Card(card_content, color="black", inverse=True,style=card_style,className="bi bi-info-circle-fill me-2"),width=2),
-                dbc.Col(dbc.Card(card_content, color="black", inverse=True,style=card_style),width=2),
-                dbc.Col(dbc.Card(card_content, color="black", inverse=True,style=card_style),width=2),
-                dbc.Col(dbc.Card(card_content, color="black", inverse=True,style=card_style),width=2),
+                dbc.Col(dbc.Card(swap_stations_card_content, color="black", inverse=True,style=card_style), width = 3, style=col_style),
+                dbc.Col(dbc.Card(public_card_content, color="black", inverse=True,style=card_style), width = 3, style=col_style),
+                dbc.Col(dbc.Card(private_card_content, color="black", inverse=True,style=card_style), width = 3, style=col_style),
+                dbc.Col(dbc.Card(riders_card_content, color="black", inverse=True,style=card_style), width = 3, style=col_style),
             ],
-            className="mb-4",
-            justify="center",
-            style={"margin-bottom":"222px", "offset-bottom":"-50px"},
+            className="mb-4"
         ),
-        dbc.Row(
+        # row two
+
+             dbc.Row(
             [
-                dbc.Col(dbc.Card(
-                   
-                    
-                    color="black", 
-                    inverse=True,
-                    style=card_style),
-                    width=2),
-                dbc.Col(dbc.Card(card_content, color="black", inverse=True,style=card_style),width=2),
-                dbc.Col(dbc.Card(card_content, color="black", inverse=True,style=card_style),width=2),
-                dbc.Col(dbc.Card(card_content, color="black", inverse=True,style=card_style),width=2),
+                dbc.Col(dbc.Card(batteries_card_content, color="black", inverse=True,style=card_style), width = 3, style=col_style),
+                dbc.Col(dbc.Card(swaps_card_content, color="black", inverse=True,style=card_style), width = 3, style=col_style),
+                dbc.Col(dbc.Card(distance_card_content, color="black", inverse=True,style=card_style), width = 3, style=col_style),
+                dbc.Col(dbc.Card(average_distance_card_content, color="black", inverse=True,style=card_style), width = 3, style=col_style),
             ],
-            className="mb-4",
-            justify="center",
-            style={"margin-top":"30px", "offset-bottom":"-50px"},
-        ),
-    ],style={"margin-top":"130px"}
+            className="mb-4", style={"margin-top":"40px"}
+        )
+    ])
+    ],style={"margin-top":"100px"}
 )
 
 
